@@ -1,0 +1,11 @@
+.row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+.card-title {
+    text-align: center;
+}
