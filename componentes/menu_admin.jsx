@@ -20,15 +20,19 @@ export default function Menu_admin() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                            <Link href="#" onClick={salir} className="nav-link active" aria-current="page">Cerrar Sesión</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link href="/marcas" className="nav-link active" aria-current="page">Marcas</Link>
+                        </li>
                         <li className="nav-item">
                             <Link href="/autos" className="nav-link active" aria-current="page">Autos</Link>
                         </li>
                         <li className="nav-item">
                             <Link href="/autos/nuevo" className="nav-link active" aria-current="page">Añadir</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link href="#" onClick={salir} className="nav-link active" aria-current="page">Cerrar Sesión</Link>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>

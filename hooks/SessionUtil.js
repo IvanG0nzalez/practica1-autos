@@ -3,7 +3,7 @@ export const save = (key, data) => {
 }
 
 export const get = (key) => {
-    sessionStorage.setItem(key, data);
+    sessionStorage.getItem(key);
 }
 
 export const saveToken = (key) => {
@@ -12,6 +12,10 @@ export const saveToken = (key) => {
 
 export const getToken = () => {
     return sessionStorage.getItem("token");
+}
+
+export const getExternalUser = () => {
+    return sessionStorage.getItem('externalUser');
 }
 
 export const borrarSesion = () => {

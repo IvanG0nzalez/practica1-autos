@@ -1,3 +1,5 @@
+import { getToken } from "./SessionUtil";
+
 let URL = "https://computacion.unl.edu.ec/pdml/practica1/";
 export function url_api() {
   return URL;
@@ -9,7 +11,7 @@ export async function enviar(recurso, data) {
   headers = {
     "Accept": "application/json",
   };
-  
+
 
   const response = await fetch(URL + recurso, {
     method: "POST",
@@ -24,24 +26,37 @@ export async function obtener(recurso) {
   return await response.json();
 }
 
-export async function enviar_auto(recurso, data, token='') {
-  let headers = []
-  if(token !== '') {
-    headers = {
-      "Accept": "application/json",
-    };
-  } else {
-    headers = {
-      "Accept": "application/json",
-      "TOKEN-KEY": token
-    };
+export async function obtener_autos(recurso, token){
+  const headers = {
+    "Accept": "application/json",
+    "Content-type":"application/json",
+    "TOKEN-KEY": token,
   }
-  
-
   const response = await fetch(URL + recurso, {
-    method: "POST",
+    method: "GET",
     headers: headers,
-    body: JSON.stringify(data),
+    cache:'no-store'
   });
-  return await response.json();
+  const responseData = await response.json();
+  return responseData;
+}
+
+export async function enviar_auto(recurso, data, token) {
+  try {
+    let headers = {
+      "Accept": "application/json",
+      "Content-type": "application/json",
+      "TOKEN-KEY": token,
+    };
+
+    const response = await fetch(URL + recurso, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error("Error en solicitud", error);
+    throw error;
+  }
 }

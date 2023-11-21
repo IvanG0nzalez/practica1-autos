@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+#boton-nuevo-auto{
+  display: grid;
+  place-items: center;
+}
